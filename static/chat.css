@@ -1,0 +1,14 @@
+.message{
+    border-style: groove;
+    border-width: 5px;
+    border-color: blue;
+    height: 500px;
+    width: 50%;
+    margin-left: 300px;
+}
+
+.input{
+    height: 100px;
+    width: 50%;
+    margin-left: 300px;
+}

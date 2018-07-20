@@ -1,16 +1,30 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,session,request,redirect,url_for
 
 app = Flask(__name__)
 
 #enable dubug mode
 app.debug = True
+#set session secret_key
+app.secret_key = 'any random string'
 
+#set nickname page
 @app.route('/')
 def index():
-    user = 'grant'
     #input nickname page
-    return render_template('nickname.html',name = user)
+    return render_template('nickname.html')
 
+#set session for user name 
+@app.route('/setNickname',methods = ['POST', 'GET'])
+def setUsername():
+    #set session for user
+    session['username'] = request.form['nickname']
+    return render_template('chat.html')
 
+#handle chat input message
+@app.route('/chatInput')
+def handleChatInput():
+    
+
+    
 if __name__ == '__main__':
     app.run()

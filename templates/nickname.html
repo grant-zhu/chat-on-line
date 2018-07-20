@@ -2,7 +2,11 @@
 <html>
   <body>
     <div class='nickname'>
-      <input type='text' name='nickname' />
+      <form action='/setNickname' method='POST'>
+	<p><h3>Enter your nickname</h3></p>
+	<p><input type='text' name='nickname' /></p>
+	<p><input type='submit' value='Enter' /></p>
+      </form>
     </div>
   </body>
 </html>
