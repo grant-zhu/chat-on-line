@@ -4,18 +4,17 @@
 <head>
   <h3>chat on line</h3>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='chat.css') }}" />
-  
+  <script type="text/javascript" src = "{{ url_for('static',filename='chat.js') }}"></script>  
 </head>
 
   <body>
-    <div class='message'>
+    <div class='message' id='message'>
       
     </div>
     <div class='input'>
-      <form action='/chatInput' method='POST'>
-	<textarea  rows="5" cols="90" name='chatmessage'></textarea>
-	<input type='submit' value='发送'/>
-      </form>
+	<textarea  id='inputMessage' rows="5" cols="90" name='chatmessage'></textarea>
+	<!-- <input type='submit' value='发送'/> -->
+	<button  onclick="sendMessage()" class='sendMessageBtn'>发送</button>
     </div>
     
   </body>

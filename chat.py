@@ -1,3 +1,4 @@
+
 from flask import Flask,render_template,session,request,redirect,url_for
 
 app = Flask(__name__)
@@ -20,9 +21,10 @@ def setUsername():
     session['username'] = request.form['nickname']
     return render_template('chat.html')
 
-#handle chat input message
-@app.route('/chatInput')
-def handleChatInput():
+#get user name
+@app.route('/getUsername')
+def getUsername():
+    return session['username']
     
 
     
