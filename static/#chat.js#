@@ -23,7 +23,7 @@ function getMessage(username){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
 	if (this.readyState == 4 && this.status == 200) {
-	    //parse to JSON  
+	    //parse to JSON 
 	    message = JSON.parse(this.responseText);
 	    // x[i].style.cssText = "width:100px;height:100px!important;"
 	    //traverse message directory

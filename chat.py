@@ -47,7 +47,7 @@ def saveMessage():
 #get message
 @app.route('/getMessage')
 def getMessage():
-    #find last 10 message today
+    #find last 5 messages today
     todayDate = datetime.datetime.today().strftime("%Y-%m-%d")
     #messageDir = mongo.db.chatmessage.find({'date':todayDate}).sort({_id:-1}).limit(5)
     messageDir = mongo.db.chatmessage.find({'date':todayDate}).sort("_id",-1).limit(5)

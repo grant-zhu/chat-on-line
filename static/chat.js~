@@ -1,0 +1,9 @@
+
+//send message button click
+function sendMessage(){
+    // debug			
+    alert('hi')
+    messageContent=Document.getElementById('message').innerHTML
+    imputMessage=Document.getElementById("inputMessage").value
+    Document.getElementById('message').innerHTML=messageContent+'<br>'+inputMessage
+}

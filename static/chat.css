@@ -3,12 +3,19 @@
     border-width: 5px;
     border-color: blue;
     height: 500px;
-    width: 50%;
-    margin-left: 300px;
+    width: 40%;
+    margin-left: 400px;
 }
 
 .input{
     height: 100px;
     width: 50%;
     margin-left: 300px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    height: 100px;
+    width: 100px;
 }
