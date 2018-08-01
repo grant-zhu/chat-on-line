@@ -1,4 +1,4 @@
-//messages counts in page
+//messages count in page
 var messageCount = 4;
 //get username
 function getUser(){
@@ -23,7 +23,7 @@ function getMessage(username){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
 	if (this.readyState == 4 && this.status == 200) {
-	    //parse to JSON  
+	    //parse to JSON 
 	    message = JSON.parse(this.responseText);
 	    // x[i].style.cssText = "width:100px;height:100px!important;"
 	    //traverse message directory
@@ -31,14 +31,22 @@ function getMessage(username){
 	    var liTag=ulTag.getElementsByTagName('li');
 	    for (let i = message.length-1; i >= 0; i--){
 		var chatMessage = message[i].username+': '+message[i].message;
+		//liTag[messageCount-i].style.width='200px'
 		//if current user's message
 		if(message[i].username == username){
 		    //do not show username 
 		    var chatMessage = message[i].message;
-		    liTag[messageCount-i].style.margin='5px 10px 0 500px';
+		    liTag[messageCount-i].style.marginRight='60px';
+		    liTag[messageCount-i].style.textAlign='right';
+		    liTag[messageCount-i].style.backgroundColor='#b8db29';
+		    liTag[messageCount-i].style.float='right';
+		    
 		}
 		else{
-		    liTag[messageCount-i].style.margin='5px 10px 0 0';
+		    liTag[messageCount-i].style.marginLeft='60px';
+		    liTag[messageCount-i].style.textAlign='left'
+		    liTag[messageCount-i].style.backgroundColor='#EEE';
+		    liTag[messageCount-i].style.float='left';		    		    
 		}
 		liTag[messageCount-i].innerHTML=chatMessage;
 	}
@@ -47,15 +55,6 @@ function getMessage(username){
   //set sync
   xhttp.open("GET", "/getMessage", true);
   xhttp.send();
-}
-
-//delete all message
-function deleteAllMessage(){
-    var messageDivNode =  document.getElementById("message");
-    while(messageDivNode.hasChildNodes())
-    {
-	messageDivNode.removeChild(messageDivNode.lastChild);
-    }
 }
 
 //send message

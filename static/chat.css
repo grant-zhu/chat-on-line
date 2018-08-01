@@ -1,21 +1,56 @@
 .message{
-    border-style: groove;
-    border-width: 5px;
-    border-color: blue;
+    /* border-style: groove; */
+    /* border-width: 5px; */
+    /* border-color: blue; */
+    border: 1px solid blue;    
     height: 500px;
     width: 40%;
     margin-left: 400px;
 }
 
 .input{
-    height: 100px;
-    width: 50%;
-    margin-left: 300px;
+    /* height: 100px; */
+    /* width: 50%; */
+    /* margin-left: 300px; */
+    position: relative;  
+    margin-top: 7px;  
+    height: 40px;      
+}
+
+.input .sendMessageBtn {
+    width: 75px;  
+    line-height: 38px;  
+    height: 38px;  
+    margin-left: 5px;  
+    font-size: 14px;  
+    background-color: #FDFDFD;  
+    border: 1px solid #D7D7D7;
+    text-align: center;
+}
+
+.input #inputMessage {
+    margin-left: 400px;
+    overflow: hidden;
+    padding: 8px 0;  
+    font-size: 16px;  
+    width: 585px;  
+    height: 100%;  
+    border: 1px solid #D7D7D7;  
 }
 
 ul {
     list-style-type: none;
     padding: 0;
-    height: 100px;
-    width: 100px;
+    height: 300px;
+    width: 650px;
+}
+
+li {
+    margin-top: 5px;
+    word-break: break-all;
+    border-radius: 5px;  
+    position: relative;  
+    padding: 15px;
+    width: 200px;
+    overflow: hidden;
 }
