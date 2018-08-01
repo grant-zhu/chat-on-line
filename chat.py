@@ -54,4 +54,6 @@ def getMessage():
     return dumps(messageDir)
     
 if __name__ == '__main__':
-    app.run()
+    #app.run()
+    #let other ip can visit
+    app.run(host='0.0.0.0')    

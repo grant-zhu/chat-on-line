@@ -40,13 +40,15 @@ function getMessage(username){
 		    liTag[messageCount-i].style.textAlign='right';
 		    liTag[messageCount-i].style.backgroundColor='#b8db29';
 		    liTag[messageCount-i].style.float='right';
+		    liTag[messageCount-i].style.marginLeft='300px';		    
 		    
 		}
 		else{
 		    liTag[messageCount-i].style.marginLeft='60px';
 		    liTag[messageCount-i].style.textAlign='left'
 		    liTag[messageCount-i].style.backgroundColor='#EEE';
-		    liTag[messageCount-i].style.float='left';		    		    
+		    liTag[messageCount-i].style.float='left';
+		    liTag[messageCount-i].style.marginRight='300px';	    	    
 		}
 		liTag[messageCount-i].innerHTML=chatMessage;
 	}
