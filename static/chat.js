@@ -28,30 +28,38 @@ function getMessage(username){
 	    // x[i].style.cssText = "width:100px;height:100px!important;"
 	    //traverse message directory
 	    var ulTag=document.getElementById('messageList');
-	    var liTag=ulTag.getElementsByTagName('li');
-	    for (let i = message.length-1; i >= 0; i--){
-		var chatMessage = message[i].username+': '+message[i].message;
-		//liTag[messageCount-i].style.width='200px'
+	    var messageBox = document.getElementById("message");
+	    for (let i = 0; i < message.length; i++){
+		var linode = document.createElement('li');
 		//if current user's message
 		if(message[i].username == username){
-		    //do not show username 
-		    var chatMessage = message[i].message;
-		    liTag[messageCount-i].style.marginRight='60px';
-		    liTag[messageCount-i].style.textAlign='right';
-		    liTag[messageCount-i].style.backgroundColor='#b8db29';
-		    liTag[messageCount-i].style.float='right';
-		    liTag[messageCount-i].style.marginLeft='300px';		    
-		    
+		    //do not show username
+		    var chatMessage = message[i].message;		    
+		    var textnode = document.createTextNode(chatMessage)
+		    linode.appendChild(textnode)
+		    linode.style.marginRight='60px';
+		    linode.style.textAlign='right';
+		    linode.style.backgroundColor='#b8db29';
+		    linode.style.float='right';
+		    linode.style.marginLeft='300px';		    
 		}
 		else{
-		    liTag[messageCount-i].style.marginLeft='60px';
-		    liTag[messageCount-i].style.textAlign='left'
-		    liTag[messageCount-i].style.backgroundColor='#EEE';
-		    liTag[messageCount-i].style.float='left';
-		    liTag[messageCount-i].style.marginRight='300px';	    	    
+		    var chatMessage = message[i].username+': '+message[i].message;		    
+		    var textnode = document.createTextNode(chatMessage)
+		    linode.appendChild(textnode)
+		    linode.style.marginLeft='60px';
+		    linode.style.textAlign='left'
+		    linode.style.backgroundColor='#EEE';
+		    linode.style.float='left';
+		    linode.style.marginRight='300px';	    	    
 		}
-		liTag[messageCount-i].innerHTML=chatMessage;
-	}
+		ulTag.appendChild(linode)
+		//if scrollTop in the bottom
+		var scrollToBottom = messageBox.scrollHeight-messageBox.clientHeight-messageBox.scrollTop
+		if( scrollToBottom < 50 ){
+		    messageBox.scrollTop = messageBox.scrollTop+47;
+		}
+	    }
     }
   };
   //set sync
@@ -83,12 +91,13 @@ function sendMessage(){
 // Enter key
 document.onkeydown=function(event){
     var code = event.keyCode;
-    if(code ==13){ //这是键盘的enter监听事件
+    if(code ==13){ //key Enter
 	//call send message function
 	sendMessage()
 	//document.getElementById("inputMessage").focus()
     }
-}
-//set get user run every 2s
-setInterval('getUser()', 1000)
-//get User and message
+};
+
+//set get user run every 1s
+setInterval('getUser()', 1000);
+

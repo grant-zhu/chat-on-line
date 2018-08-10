@@ -6,6 +6,7 @@
     height: 500px;
     width: 40%;
     margin-left: 400px;
+    overflow-y: scroll;    
 }
 
 .input{
@@ -19,7 +20,6 @@
 
 .input .sendMessageBtn {
     width: 75px;  
-    line-height: 38px;  
     height: 38px;  
     margin-left: 5px;  
     font-size: 14px;  
@@ -50,7 +50,8 @@ li {
     margin-top: 5px;
     word-break: break-all;
     border-radius: 5px;  
-    position: relative;  
+    position: relative;
+    bottom: 0;
     padding: 10px;
     /* width: 200px; */
     width: auto;
