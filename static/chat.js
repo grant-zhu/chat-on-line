@@ -1,5 +1,5 @@
-//messages count in page
-var messageCount = 4;
+//if send message
+var sendMessageFlag = false
 //get username
 function getUser(){
     var xhttp = new XMLHttpRequest();
@@ -23,12 +23,21 @@ function getMessage(username){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
 	if (this.readyState == 4 && this.status == 200) {
+
 	    //parse to JSON 
 	    message = JSON.parse(this.responseText);
 	    // x[i].style.cssText = "width:100px;height:100px!important;"
 	    //traverse message directory
 	    var ulTag=document.getElementById('messageList');
 	    var messageBox = document.getElementById("message");
+	    scrollBottom = false;
+	    //if scrollTop in the bottom or user send message
+	    if( messageBox.scrollTop ===  messageBox.scrollHeight-messageBox.clientHeight || sendMessageFlag){
+		scrollBottom = true;
+		//send message to false
+		sendMessageFlag = false
+	    }
+
 	    for (let i = 0; i < message.length; i++){
 		var linode = document.createElement('li');
 		//if current user's message
@@ -54,10 +63,9 @@ function getMessage(username){
 		    linode.style.marginRight='300px';	    	    
 		}
 		ulTag.appendChild(linode)
-		//if scrollTop in the bottom
-		var scrollToBottom = messageBox.scrollHeight-messageBox.clientHeight-messageBox.scrollTop
-		if( scrollToBottom < 50 ){
-		    messageBox.scrollTop = messageBox.scrollTop+47;
+		//if scroll in bottom before, put scroll into bottom
+		if(scrollBottom){
+		    messageBox.scrollTop = messageBox.scrollHeight;
 		}
 	    }
     }
@@ -69,6 +77,8 @@ function getMessage(username){
 
 //send message
 function sendMessage(){
+    //sendMessage is true
+    sendMessageFlag = true
     message = document.getElementById("inputMessage").value
     if(message == ''){
 	alert('message can not be empty, need input something')
