@@ -30,10 +30,10 @@ function getMessage(username){
 	    //traverse message directory
 	    var ulTag=document.getElementById('messageList');
 	    var messageBox = document.getElementById("message");
-	    scrollBottom = false;
+	    scrollBottomFlag = false;
 	    //if scrollTop in the bottom or user send message
 	    if( messageBox.scrollTop ===  messageBox.scrollHeight-messageBox.clientHeight || sendMessageFlag){
-		scrollBottom = true;
+		scrollBottomFlag = true;
 		//send message to false
 		sendMessageFlag = false
 	    }
@@ -45,26 +45,26 @@ function getMessage(username){
 		    //do not show username
 		    var chatMessage = message[i].message;		    
 		    var textnode = document.createTextNode(chatMessage)
-		    linode.appendChild(textnode)
+		    linode.appendChild(textnode);
 		    linode.style.marginRight='60px';
-		    linode.style.textAlign='right';
+		    linode.style.textAlign='left';
 		    linode.style.backgroundColor='#b8db29';
 		    linode.style.float='right';
 		    linode.style.marginLeft='300px';		    
 		}
 		else{
 		    var chatMessage = message[i].username+': '+message[i].message;		    
-		    var textnode = document.createTextNode(chatMessage)
-		    linode.appendChild(textnode)
+		    var textnode = document.createTextNode(chatMessage);
+		    linode.appendChild(textnode);
 		    linode.style.marginLeft='60px';
-		    linode.style.textAlign='left'
+		    linode.style.textAlign='left';
 		    linode.style.backgroundColor='#EEE';
 		    linode.style.float='left';
 		    linode.style.marginRight='300px';	    	    
 		}
 		ulTag.appendChild(linode)
 		//if scroll in bottom before, put scroll into bottom
-		if(scrollBottom){
+		if(scrollBottomFlag){
 		    messageBox.scrollTop = messageBox.scrollHeight;
 		}
 	    }
