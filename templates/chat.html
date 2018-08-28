@@ -1,7 +1,8 @@
 <!doctype html>
 
 <html>
-<head>
+  <head>
+    <title>公共聊天室</title>
   <h3>chat on line</h3>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='chat.css') }}" />
   <script type="text/javascript" src = "{{ url_for('static',filename='chat.js') }}"></script>  
@@ -17,4 +18,7 @@
 	<button  onclick="sendMessage()" class='sendMessageBtn'>发送</button>
     </div>
   </body>
+  <script>
+    document.getElementById("inputMessage").focus()
+  </script>
 </html>

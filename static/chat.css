@@ -56,4 +56,5 @@ li {
     /* width: 200px; */
     width: auto;
     overflow: hidden;
+    text-align: left;
 }

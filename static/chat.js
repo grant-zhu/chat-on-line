@@ -92,7 +92,9 @@ function sendMessage(){
 	xhttp.open("POST","/sendMessage",true);
 	//send json data
 	xhttp.setRequestHeader("Content-type", "application/json");
-	xhttp.send(JSON.stringify({"message":message}));    
+	xhttp.send(JSON.stringify({"message":message}));
+	//focus to input field
+	document.getElementById("inputMessage").focus()
     }
 }
 
@@ -102,6 +104,8 @@ function sendMessage(){
 document.onkeydown=function(event){
     var code = event.keyCode;
     if(code ==13){ //key Enter
+	//not change a new line after type Enter
+	event.preventDefault();
 	//call send message function
 	sendMessage()
 	//document.getElementById("inputMessage").focus()
