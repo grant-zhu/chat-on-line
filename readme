@@ -1,5 +1,5 @@
 Start project:
       python chat.py
-visit localhost:5000
-mongodb database name: chatonline, username: root, no password
+Visit localhost:5000
+Mongodb database name: chatonline, username: root, no password
 
