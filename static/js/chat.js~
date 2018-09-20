@@ -23,9 +23,9 @@ function getMessage(username){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){
 	if (this.readyState == 4 && this.status == 200) {
-
 	    //parse to JSON 
 	    message = JSON.parse(this.responseText);
+	    
 	    // x[i].style.cssText = "width:100px;height:100px!important;"
 	    //traverse message directory
 	    var ulTag=document.getElementById('messageList');
@@ -40,27 +40,63 @@ function getMessage(username){
 
 	    for (let i = 0; i < message.length; i++){
 		var linode = document.createElement('li');
+		var divMesNode = document.createElement('div');
+		var chatMessage = message[i].message;
+		//add img element for headportrait
+		var imageElement = document.createElement('img');
+		imageElement.src = message[i].headportrait;
+		linode.appendChild(imageElement);
+		//add message element
+		var textnode = document.createTextNode(chatMessage);
+		divMesNode.appendChild(textnode);
+		// linode.appendChild(divMesNode)
+		//set height for headportrait
+		imageElement.style.height = '40px';
+		divMesNode.style.textAlign='left';
+		divMesNode.style.padding='10px';
+		divMesNode.style.borderRadius='5px';
+		divMesNode.style.wordBreak = 'break-all';
 		//if current user's message
+		alert(username)
+		alert(message[i].username)
 		if(message[i].username == username){
 		    //do not show username
-		    var chatMessage = message[i].message;		    
-		    var textnode = document.createTextNode(chatMessage)
-		    linode.appendChild(textnode);
-		    linode.style.marginRight='60px';
-		    linode.style.textAlign='left';
-		    linode.style.backgroundColor='#b8db29';
+		    linode.appendChild(divMesNode);
+		    // linode.style.marginRight='60px';
+		    // linode.style.textAlign='left';
+		    // linode.style.backgroundColor='#b8db29';
+		    // linode.style.float='right';
+		    // linode.style.marginLeft='300px';
+		    imageElement.style.marginRight = '10px';
+		    divMesNode.style.marginRight = '10px';
+		    divMesNode.style.float='left'; 
+		    divMesNode.style.backgroundColor='#b8db29';
 		    linode.style.float='right';
-		    linode.style.marginLeft='300px';		    
+		    linode.style.marginLeft='300px';
 		}
 		else{
-		    var chatMessage = message[i].username+': '+message[i].message;		    
-		    var textnode = document.createTextNode(chatMessage);
-		    linode.appendChild(textnode);
-		    linode.style.marginLeft='60px';
-		    linode.style.textAlign='left';
-		    linode.style.backgroundColor='#EEE';
+		    var username = message[i].username;
+		    var usernode = document.createTextNode(username);
+ 		    var divUserNode = document.createElement('div');
+		    divUserNode.appendChild(usernode);
+		    //linode.appendChild(divUserNode);
+		    var divUserMesNode = document.createElement('div');
+		    divUserMesNode.appendChild(divUserNode)
+		    divUserMesNode.appendChild(divMesNode)
+		    linode.appendChild(divUserMesNode);
+		    // linode.style.marginLeft='60px';
+		    // linode.style.textAlign='left';
+		    // linode.style.backgroundColor='#EEE';
+		    // linode.style.float='left';
+		    // linode.style.marginRight='300px';
+		    divUserMesNode.style.float = 'right';
+		    divUserNode.style.marginLeft = '10px';
+   		    imageElement.style.marginLeft = '10px';
+		    divMesNode.style.marginLeft = '10px';
+		    divMesNode.style.float='right';
+		    divMesNode.style.backgroundColor='#EEE';
 		    linode.style.float='left';
-		    linode.style.marginRight='300px';	    	    
+		    linode.style.marginRight='300px';
 		}
 		ulTag.appendChild(linode)
 		//if scroll in bottom before, put scroll into bottom
